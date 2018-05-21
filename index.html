@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Metronome</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/scss/style.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" type="text/css">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+
+        <script language="javascript" src="assets/js/libraries/monkeypatch.js"></script>
+        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+        <script language="javascript" type="text/javascript" src="assets/js/metronome.js"></script>
+        <script language="javascript" type="text/javascript" src="assets/js/worker.js"></script>
+        <!-- <script language="javascript" type="text/javascript" src="assets/js/sketch.js"></script> -->
+        <!-- <script src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script> -->
+
+    </head>
+    <body>
+        <div class="metronome">
+            <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                    <div class="mdl-layout__header-row">
+                    <span class="mdl-layout-title">The Metronome</span>
+                    </div>
+                    <div class="mdl-layout__header-row">
+                    <button class="mdl-button mdl-demo mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add"
+                    onClick="play();">
+                    <i id="play-icon" class="material-icons" role="presentation">play_arrow</i>
+                    <span class="visuallyhidden">Add</span>
+                    </button>
+                    </div>
+                </header>
+        
+                <main class="mdl-layout__content">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <h6 class="mdl-typography--title">Tempo</h6>
+                            <h2 id="bpm" class="mdl-typography--display-4"><output name="bpm" id="bpmOutput">120</output><span class="mdl-typography--subhead"> bpm</span></h2>
+            
+                            <input class="mdl-slider mdl-js-slider" type="range" name="bpm" id="bpmInput" value="120" min="20" max="250" oninput="tempo = event.target.value; bpmOutput.value = bpmInput.value;">
+            
+                            <h6 class="mdl-typography--title">Meter</h6>
+                            <h2 id="count" class="mdl-typography--display-2"><output name="count" id="countOutput">4</output><span class="mdl-typography--subhead"> counts</span></h2>
+            
+                            <input class="mdl-slider mdl-js-slider" type="range" name="count" id="countInput" value="4" min="1" max="12" oninput="meter = event.target.value; countOutput.value = countInput.value;">
+                        </div>
+            
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <h6 class="mdl-typography--title">Volumes</h6>
+                            <p>Master</p>
+                            <input class="mdl-slider mdl-js-slider" type="range"
+                            min="0" max="100" value="50" tabindex="0"
+                            oninput="masterVolume = event.target.value / 100;">
+            
+                            <p>Accent</p>
+                            <input class="mdl-slider mdl-js-slider" type="range"
+                            min="0" max="100" value="100" tabindex="0"
+                            oninput="accentVolume = event.target.value / 100;">
+            
+                            <p>Quarter Note</p>
+                            <input class="mdl-slider mdl-js-slider" type="range"
+                            min="0" max="100" value="75" tabindex="0"
+                            oninput="quarterVolume = event.target.value / 100;">
+            
+                            <p>Eighth Note</p>
+                            <input class="mdl-slider mdl-js-slider" type="range"
+                            min="0" max="100" value="0" tabindex="0"
+                            oninput="eighthVolume = event.target.value / 100;">
+            
+                            <p>Sixteenth Note</p>
+                            <input class="mdl-slider mdl-js-slider" type="range"
+                            min="0" max="100" value="0" tabindex="0"
+                            oninput="sixteenthVolume = event.target.value / 100;">
+            
+                            <p>Triplet</p>
+                            <input class="mdl-slider mdl-js-slider" type="range"
+                            min="0" max="100" value="0" tabindex="0"
+                            oninput="tripletVolume = event.target.value / 100;">
+
+                            <div id="randomizer">
+                                <button id="rand_button" onClick="randomizer()"><output name="randomizer" id="randOutput">Randomize!</output></button>
+                            </div>
+                        </div>
+                        
+                        <div id="keyContainer" class="mdl-cell mdl-cell--12-col">
+                            <div id="keyTitle">
+                                <h6 class="mdl-typography--title">Key</h6>
+                                <div id="key">
+                                    <h2 class="mdl-typography--display-2" id="keyOutput">A</h2><output  id="hzOutput" class="mdl-typography--subhead">440</output><span>hz</span>
+                                </div>
+                            </div>
+                            <div id="key_list" class="mdl-cell mdl-cell--12-col">
+                                <button value="261.626" name="C" onClick="setKey(this.value)">C</button>
+                                <button value="277.183" name="C#" onClick="setKey(this.value)">C#</button>
+                                <button value="293.665" name="D" onClick="setKey(this.value)">D</button>
+                                <button value="311.127" name="D#" onClick="setKey(this.value)">D#</button>
+                                <button value="329.628" name="E" onClick="setKey(this.value)">E</button>
+                                <button value="349.228" name="F" onClick="setKey(this.value)">F</button>
+                                <button value="369.994" name="F#" onClick="setKey(this.value)">F#</button>
+                                <button value="391.995" name="G" onClick="setKey(this.value)">G</button>
+                                <button value="415.305" name="G#" onClick="setKey(this.value)">G#</button>
+                                <button value="440.000" name="A" onClick="setKey(this.value)">A</button>
+                                <button value="466.164" name="A#" onClick="setKey(this.value)">A#</button>
+                                <button value="493.883" name="B" onClick="setKey(this.value)">B</button>
+                                <button value="523.251" name="C" onClick="setKey(this.value)">C</button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>
