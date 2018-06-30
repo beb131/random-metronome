@@ -5,12 +5,21 @@ var currentTwelveletNote;     // What note is currently last scheduled?
 var tempo = 120.0;
 var meter = 4;
 var key = 440;
+var active = false;
 var masterVolume = 0.5;
-var accentVolume = 1;
-var quarterVolume = 0.75;
-var eighthVolume = 0;
-var sixteenthVolume = 0;
-var tripletVolume = 0;
+var accentVolume = 0.75;
+var quarterVolume = 0.5;
+var eighthVolume = 0.5;
+var sixteenthVolume = 0.5;
+var tripletVolume = 0.5;
+
+// Notes are returning null???? 
+var quarterNote = document.getElementById("quarter");
+var eighthNote = document.getElementById("eighth");
+var sixteenthNote = document.getElementById("sixteenth");
+var tripletNote = document.getElementById("triplet");
+
+
 var lookahead = 25.0;         // How frequently to call scheduling function
                               // (in milliseconds)
 var scheduleAheadTime = 0.1;  // How far ahead to schedule audio (sec)
@@ -21,6 +30,7 @@ var noteLength = 0.05;        // length of "beep" (in seconds)
 var notesInQueue = [];        // the notes that have been put into the web audio,
                               // and may or may not have played yet. {note, time}
 var timerWorker = null;       // The Web Worker used to fire timer messages
+
 var randomized = false;
 
 function setKey(keyInput) {
@@ -92,6 +102,21 @@ function nextTwelvelet() {
   }
 }
 
+function toggleIsActive(value) {
+  var buttonId = value.getAttribute("id");
+  var button = document.querySelector("#" + buttonId + " button");
+
+  if (!active) {
+    button.textContent = "Deactivate";
+    active = true;
+    value.classList.add("playing");
+  } else {
+    button.textContent = "Activate";
+    active = false;
+    value.classList.remove("playing");
+  }
+}
+
 function calcVolume(beatVolume) {
   return (beatVolume * masterVolume);
 }
@@ -114,16 +139,16 @@ function scheduleNote(beatNumber, time) {
       osc.frequency.value = key;
       gainNode.gain.value = calcVolume(quarterVolume);
     }
-  } else if (beatNumber % 12 === 0) {                     // quarter notes = medium pitch
+  } else if (beatNumber % 12 === 0 && quarterNote.classList.contains("playing")) {
     osc.frequency.value = key;
     gainNode.gain.value = calcVolume(quarterVolume);
-  } else if (beatNumber % 6 === 0) {
+  } else if (beatNumber % 6 === 0 && eighthNote.classList.contains("playing")) {
     osc.frequency.value = key;
     gainNode.gain.value = calcVolume(eighthVolume);
-  } else if (beatNumber % 4 === 0) {
+  } else if (beatNumber % 4 === 0 && tripletNote.classList.contains("playing")) {
     osc.frequency.value = key * 1.75;
     gainNode.gain.value = calcVolume(tripletVolume);
-  } else if (beatNumber % 3 === 0 ) {                    // other 16th notes = low pitch
+  } else if (beatNumber % 3 === 0 && sixteenthNote.classList.contains("playing")) {
     osc.frequency.value = key;
     gainNode.gain.value = calcVolume(sixteenthVolume);
   } else {
@@ -141,8 +166,6 @@ function randomizer() {
   } else {
     document.getElementById("rand_button").innerHTML = "Unrandomize!";
     randomized = true;
-    //eighthVolume = 100;
-    //console.log(eighthVolume);
   }
 }
 

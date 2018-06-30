@@ -60,8 +60,28 @@
                             <input class="mdl-slider mdl-js-slider" type="range"
                             min="0" max="100" value="100" tabindex="0"
                             oninput="accentVolume = event.target.value / 100;">
-            
+
                             <p>Quarter Note</p>
+                            <div id="quarter" class="button-container">
+                                <button onClick="toggleIsActive(quarter)">Activate</button>
+                            </div>
+
+                            <p>Eight Note</p>
+                            <div id="eighth" class="button-container">
+                                <button onClick="toggleIsActive(eighth)">Activate</button>
+                            </div>                            
+
+                            <p>Sixteenth Note</p>
+                            <div id="sixteenth" class="button-container">
+                                <button onClick="toggleIsActive(sixteenth)">Activate</button>
+                            </div>
+
+                            <p>Triplet</p>
+                            <div id="triplet" class="button-container">
+                                <button onClick="toggleIsActive(triplet)">Activate</button>
+                            </div>
+
+<!--                             <p>Quarter Note</p>
                             <input class="mdl-slider mdl-js-slider" type="range"
                             min="0" max="100" value="75" tabindex="0"
                             oninput="quarterVolume = event.target.value / 100;">
@@ -79,7 +99,7 @@
                             <p>Triplet</p>
                             <input class="mdl-slider mdl-js-slider" type="range"
                             min="0" max="100" value="0" tabindex="0"
-                            oninput="tripletVolume = event.target.value / 100;">
+                            oninput="tripletVolume = event.target.value / 100;"> -->
 
                             <div id="randomizer">
                                 <button id="rand_button" onClick="randomizer()"><output name="randomizer" id="randOutput">Randomize!</output></button>
