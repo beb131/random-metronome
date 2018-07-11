@@ -6,14 +6,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
 
-        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/scss/reset.css">
         <link rel="stylesheet" href="assets/scss/style.css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" type="text/css">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
 
         <script language="javascript" src="assets/js/libraries/monkeypatch.js"></script>
         <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-        <script language="javascript" type="text/javascript" src="assets/js/metronome.js"></script>
+        <script defer language="javascript" type="text/javascript" src="assets/js/metronome.js"></script>
         <script language="javascript" type="text/javascript" src="assets/js/worker.js"></script>
         <!-- <script language="javascript" type="text/javascript" src="assets/js/sketch.js"></script> -->
         <!-- <script src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script> -->
@@ -63,22 +63,22 @@
 
                             <p>Quarter Note</p>
                             <div id="quarter" class="button-container">
-                                <button onClick="toggleIsActive(quarter)">Activate</button>
+                                <button onClick="toggleIsActive('quarter')" class="playing">Deactivate</button>
                             </div>
 
                             <p>Eight Note</p>
                             <div id="eighth" class="button-container">
-                                <button onClick="toggleIsActive(eighth)">Activate</button>
+                                <button onClick="toggleIsActive('eighth')">Activate</button>
                             </div>                            
 
                             <p>Sixteenth Note</p>
                             <div id="sixteenth" class="button-container">
-                                <button onClick="toggleIsActive(sixteenth)">Activate</button>
+                                <button onClick="toggleIsActive('sixteenth')">Activate</button>
                             </div>
 
                             <p>Triplet</p>
                             <div id="triplet" class="button-container">
-                                <button onClick="toggleIsActive(triplet)">Activate</button>
+                                <button onClick="toggleIsActive('triplet')">Activate</button>
                             </div>
 
 <!--                             <p>Quarter Note</p>
@@ -102,7 +102,8 @@
                             oninput="tripletVolume = event.target.value / 100;"> -->
 
                             <div id="randomizer">
-                                <button id="rand_button" onClick="randomizer()"><output name="randomizer" id="randOutput">Randomize!</output></button>
+                                <h3 id="rand_output">Randomizer Off</h3>
+                                <button id="rand_button" onClick="randomizer()">Randomize!</button>
                             </div>
                         </div>
                         
