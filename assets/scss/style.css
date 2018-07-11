@@ -1,5 +1,11 @@
+@font-face {
+  font-family: DS-Digital;
+  src: url(../fonts/DS-DIGI.TTF); }
 body {
   color: #666; }
+
+#bpmOutput {
+  font-family: DS-Digital; }
 
 .demo-list-item {
   width: 300px; }

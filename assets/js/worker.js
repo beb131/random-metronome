@@ -1,6 +1,6 @@
 function worker_function() {
 	var timerID=null;
-	var interval=100;
+	var interval=null;
 
 	self.onmessage=function(e){
 		if (e.data=="start") {
