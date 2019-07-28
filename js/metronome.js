@@ -171,6 +171,7 @@ function randomizer() {
 
     let measuresPerRand = 1;
     let timeoutLen = (60000 / tempo) * 4 * measuresPerRand;
+
     setTimeout(function() {
       isRandomized = !isRandomized;
       for (var i = 1; i < activeButtons.length; i++) {

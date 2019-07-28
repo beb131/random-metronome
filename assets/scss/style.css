@@ -1,59 +1,81 @@
 @font-face {
   font-family: DS-Digital;
-  src: url(../fonts/DS-DIGI.TTF); }
+  src: url(../fonts/DS-DIGI.TTF);
+}
+
 body {
-  color: #666; }
+  color: #666;
+}
 
 #bpmOutput {
-  font-family: DS-Digital; }
+  font-family: DS-Digital;
+}
 
 .demo-list-item {
-  width: 300px; }
+  width: 300px;
+}
 
 #add {
   position: absolute;
   left: 20px;
   top: 80px;
-  z-index: 999; }
+  z-index: 999;
+}
 
 .mdl-slider {
   height: 200px;
   border-radius: 5px;
   background: #ccc;
   outline: none;
-  writing-mode: tb-lr;
+  -webkit-writing-mode: tb-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: tb-lr;
   /* IE */
   -webkit-appearance: slider-vertical;
-  /* WebKit */ }
+  /* WebKit */
+}
 
 @media all and (min-width: 1024px) {
   #add {
-    top: 100px; } }
+    top: 100px;
+  }
+}
+
 #key_list {
-  text-align: center; }
-  #key_list button {
-    width: 6%;
-    padding: 10px;
-    background-color: #3f51b5;
-    color: #fff;
-    border-radius: 30px;
-    border: #fff outset;
-    font-size: 20px; }
-    #key_list button:active {
-      border-style: inset; }
+  text-align: center;
+}
+
+#key_list button {
+  width: 6%;
+  padding: 10px;
+  background-color: #3f51b5;
+  color: #fff;
+  border-radius: 30px;
+  border: #fff outset;
+  font-size: 20px;
+}
+
+#key_list button:active {
+  border-style: inset;
+}
 
 #randomizer {
   text-align: center;
-  margin: 20px; }
-  #randomizer #rand_button {
-    display: block;
-    background-color: #3f51b5;
-    font-size: 20px;
-    color: #fff;
-    margin: auto;
-    padding: 15px; }
-    #randomizer #rand_button:focus {
-      outline: none; }
+  margin: 20px;
+}
+
+#randomizer #rand_button {
+  display: block;
+  background-color: #3f51b5;
+  font-size: 20px;
+  color: #fff;
+  margin: auto;
+  padding: 15px;
+}
+
+#randomizer #rand_button:focus {
+  outline: none;
+}
 
 .button-container button {
   background-color: #3f51b5;
@@ -67,11 +89,14 @@ body {
   color: #fff;
   border-radius: 30px;
   border: #fff outset;
-  font-size: 16px; }
-  .button-container button:active {
-    border-style: inset; }
+  font-size: 16px;
+}
+
+.button-container button:active {
+  border-style: inset;
+}
 
 #rand_status, #rand_output {
-  display: inline; }
-
+  display: inline;
+}
 /*# sourceMappingURL=style.css.map */
