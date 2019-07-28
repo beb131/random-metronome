@@ -21,6 +21,15 @@ body {
   top: 80px;
   z-index: 999;
 }
+
+.mdl-slider {
+  height: 200px;
+  border-radius: 5px;
+  background: #ccc;
+  outline: none;
+  writing-mode: tb-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* WebKit */
+}
   
 @media all and (min-width: 1024px) {
   #add {
@@ -30,18 +39,17 @@ body {
 
 #key_list {
   text-align: center;
-}
-
-#key_list button {
-  width: 6%;
-  padding: 10px;
-  background-color: rgb(63,81,181);
-  color: #fff;
-  border-radius: 30px;
-  border: #fff outset;
-  font-size:20px;
-  &:active {
-    border-style: inset;
+  button {
+    width: 6%;
+    padding: 10px;
+    background-color: rgb(63,81,181);
+    color: #fff;
+    border-radius: 30px;
+    border: #fff outset;
+    font-size:20px;
+    &:active {
+      border-style: inset;
+    }
   }
 }
 
@@ -50,10 +58,36 @@ body {
   text-align: center;
   margin: 20px;
   #rand_button {
+    display: block;
     background-color: #3f51b5;
     font-size: 20px;
     color: #fff; 
     margin: auto;
     padding: 15px;
+    &:focus {
+      outline: none;
+    }
   }
+}
+
+.button-container button {
+  background-color: #3f51b5;
+  font-size: 20px;
+  color: #fff; 
+  margin: auto;
+  padding: 15px;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(63,81,181);
+  color: #fff; 
+  border-radius: 30px;
+  border: #fff outset;
+  font-size:16px;
+  &:active {
+    border-style: inset;
+  }
+}
+
+#rand_status, #rand_output {
+  display: inline;
 }
