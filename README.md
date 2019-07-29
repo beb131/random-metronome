@@ -28,3 +28,5 @@ Redo styling, make responsive
 <s>Add timer to randomizer function, re-randomize after timeout</s>
 
 Make tempo only change when a new measure starts, making re-randomization always line up
+
+Change Time signature to text input, change tempo to both text and slider input

@@ -43,16 +43,25 @@ body {
 
 #key_list {
   text-align: center;
+  margin: auto;
 }
 
 #key_list button {
-  width: 6%;
-  padding: 10px;
   background-color: #3f51b5;
   color: #fff;
   border-radius: 30px;
   border: #fff outset;
+  width: 6%;
+  padding: 10px;
   font-size: 20px;
+}
+
+#key_list button:active {
+  border-style: inset;
+}
+
+#key_list button:focus {
+  outline: none;
 }
 
 #key_list button:active {
@@ -67,10 +76,16 @@ body {
 #randomizer #rand_button {
   display: block;
   background-color: #3f51b5;
-  font-size: 20px;
   color: #fff;
+  border-radius: 30px;
+  border: #fff outset;
+  font-size: 20px;
   margin: auto;
   padding: 15px;
+}
+
+#randomizer #rand_button:active {
+  border-style: inset;
 }
 
 #randomizer #rand_button:focus {
@@ -79,21 +94,22 @@ body {
 
 .button-container button {
   background-color: #3f51b5;
-  font-size: 20px;
-  color: #fff;
-  margin: auto;
-  padding: 15px;
-  width: 100%;
-  padding: 10px;
-  background-color: #3f51b5;
   color: #fff;
   border-radius: 30px;
   border: #fff outset;
+  font-size: 20px;
+  margin: auto;
+  width: 100%;
+  padding: 10px;
   font-size: 16px;
 }
 
 .button-container button:active {
   border-style: inset;
+}
+
+.button-container button:focus {
+  outline: none;
 }
 
 #rand_status, #rand_output {

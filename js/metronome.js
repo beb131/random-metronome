@@ -170,7 +170,7 @@ function randomizer() {
     });
 
     let measuresPerRand = 1;
-    let timeoutLen = (60000 / tempo) * 4 * measuresPerRand;
+    let timeoutLen = (60000 / tempo) * meter * measuresPerRand;
 
     setTimeout(function() {
       isRandomized = !isRandomized;

@@ -37,15 +37,26 @@ body {
   }
 }
 
+@mixin button {
+  background-color: rgb(63,81,181);
+  color: #fff;
+  border-radius: 30px;
+  border: #fff outset;
+  &:active {
+    border-style: inset;
+  }
+  &:focus {
+    outline: none;
+  }
+
+}
 #key_list {
   text-align: center;
+  margin:auto;
   button {
+    @include button;
     width: 6%;
     padding: 10px;
-    background-color: rgb(63,81,181);
-    color: #fff;
-    border-radius: 30px;
-    border: #fff outset;
     font-size:20px;
     &:active {
       border-style: inset;
@@ -58,34 +69,21 @@ body {
   text-align: center;
   margin: 20px;
   #rand_button {
-    display: block;
-    background-color: #3f51b5;
+    display:block;
+    @include button;
     font-size: 20px;
-    color: #fff; 
     margin: auto;
     padding: 15px;
-    &:focus {
-      outline: none;
-    }
   }
 }
 
 .button-container button {
-  background-color: #3f51b5;
+  @include button;
   font-size: 20px;
-  color: #fff; 
   margin: auto;
-  padding: 15px;
   width: 100%;
   padding: 10px;
-  background-color: rgb(63,81,181);
-  color: #fff; 
-  border-radius: 30px;
-  border: #fff outset;
   font-size:16px;
-  &:active {
-    border-style: inset;
-  }
 }
 
 #rand_status, #rand_output {
